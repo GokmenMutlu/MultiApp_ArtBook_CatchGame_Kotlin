@@ -1,0 +1,82 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+
+}
+
+android {
+    namespace 'com.gokmenmutlu.artbookkotlin'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.gokmenmutlu.artbookkotlin"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.gridlayout
+    implementation libs.androidx.espresso.contrib
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+    testImplementation "io.mockk:mockk:1.13.4"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3" // Coroutine testleri için
+    testImplementation libs.androidx.room.testing           // Room Testing
+    androidTestImplementation "androidx.fragment:fragment-testing:1.5.7"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    //
+    androidTestImplementation 'androidx.test:core:1.4.0'
+
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0' // Test koşucusu için
+
+    def roomVersion = "2.6.1"
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+
+
+    def nav_version = "2.7.7"
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    implementation libs.glide
+
+
+
+}

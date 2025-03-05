@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="example1.app.gameView.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/game_fragment" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="example1.app.mainView.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_artBookFragment3"
+            app:destination="@id/artBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artBookFragment"
+        android:name="example1.app.artApp.artBookView.ArtMainFragment"
+        android:label="fragment_art_book"
+        tools:layout="@layout/art_main_fragment" >
+        <action
+            android:id="@+id/action_artBookFragment_to_artAddFragment"
+            app:destination="@id/artAddFragment" />
+        <action
+            android:id="@+id/action_artBookFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artAddFragment"
+        android:name="example1.app.artApp.artBookView.ArtAddFragment"
+        android:label="art_add_fragment"
+        tools:layout="@layout/art_add_fragment" >
+        <argument
+            android:name="artModel"
+            app:argType="example1.app.artApp.model.ArtModel" />
+        <action
+            android:id="@+id/action_artAddFragment_to_artBookFragment"
+            app:destination="@id/artBookFragment" />
+        <action
+            android:id="@+id/action_artAddFragment_to_fullScreenFragment"
+            app:destination="@id/fullScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullScreenFragment"
+        android:name="example1.app.artApp.artBookView.FullScreenFragment"
+        android:label="art_full_screen_fragment"
+        tools:layout="@layout/art_full_screen_fragment" />
+</navigation>
